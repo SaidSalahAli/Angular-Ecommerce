@@ -1,0 +1,66 @@
+/* Card container */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Card image */
+// .card-img {
+//   object-fit: cover;
+// }
+
+/* Card body */
+.card-body {
+  padding: 10px;
+}
+
+/* Card title */
+.card-body a {
+  text-decoration: none;
+  color: #333;
+}
+
+.card-body a:hover {
+  text-decoration: underline;
+}
+
+/* Price */
+.price {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Stars (assuming it will be used for ratings) */
+.stars {
+  /* Add your styles for displaying stars */
+}
+
+/* Add to cart button and input field */
+.cont_btn {
+  margin-top: 10px;
+}
+
+.cont_btn .btn-primary {
+  width: 50%;
+}
+
+.cont_btn .form-control {
+  width: 70%;
+  margin-right: 10px;
+}
+
+/* Add button */
+.bg-cart {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bg-cart:hover {
+  background-color: #0056b3;
+}

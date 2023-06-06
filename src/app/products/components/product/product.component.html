@@ -1,0 +1,38 @@
+<div class="card h-100">
+  <div class="card-body">
+    <div class="card-img-actions">
+      <img
+        src="{{ data.image }}"
+        class="card-img"
+        width="50"
+        height="200"
+        alt=""
+      />
+    </div>
+  </div>
+  <div
+    class="card-body bg-light text-start h-50 d-flex flex-column justify-content-between"
+  >
+    <div>
+      <div class="" routerLink="/details/{{ data.id }}">
+        <a class="font-weight-semibold" [routerLink]="['/details', data.id]">{{
+          data.title.length > 20
+            ? data.title.substring(0, 40) + "..."
+            : data.title
+        }}</a>
+      </div>
+      <h3 class="price">${{ data.price }}</h3>
+      <div class="stars"></div>
+    </div>
+    <div class=" text-center d-flex justify-content-between">
+        <button class="btn btn-primary" (click)="addButton = true" *ngIf="!addButton">
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+        <div class="d-flex w-50" *ngIf="addButton">
+          <input type="number" class="form-control" [(ngModel)]="amount" />
+          <button type="button" class="bg-cart" (click)="addToCart() ; addButton =false">
+            Add
+          </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- <label for="" class="my-1">{{ title }} :</label>
+<select class="form-control" (change)="detectChanges($event)">
+  <option value="all" selected>All</option>
+  <option value="{{ option }}" *ngFor="let option of data">{{ option }}</option>
+</select> -->
+
+  <nav 
+    
+    class="navbar navbar-expand-lg navbar-dark  mb-5 m-20 shadow p-2"
+    style="background-color: #607d8b ;    margin-top: 90px;"
+  >
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#">{{ title }} :</a>
+
+      <!-- Toggle button -->
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" >
+        <select class="form-control rounded-0 " (change)="detectChanges($event)">
+            <option value="all" selected>All</option>
+            <option class="" value="{{ option }}" *ngFor="let option of data">{{ option }}</option>
+          </select> 
+        <!-- Search -->
+        <form class="w-auto py-1" style="max-width: 12rem; margin-left: 20px;">
+          <input
+            type="search"
+            class="form-control rounded-0 "
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+      </div>
+    </div>
+    <!-- Container wrapper -->
+  </nav>
