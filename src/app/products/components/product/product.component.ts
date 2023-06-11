@@ -13,8 +13,10 @@ export class ProductComponent implements OnInit {
   addButton:boolean = false;
   amount:number = 0
   product!: Product;
+  
   constructor(private cartsService: CartsService) { }
   ngOnInit(): void {
+    console.log(this.product)
   }
   addToCart() {
     this.cartsService.addToCart(this.product);

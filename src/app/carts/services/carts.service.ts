@@ -29,34 +29,6 @@ getCartItemCount(): number {
 
   addToCart(product: any) {
     this.cartProducts.push(product);
- 
     this.updateItemCount();
   }
 }
-// export class CartsService  {
-//   cartProducts: any[] = [];
-
-//   constructor() {
-//     this.getCartProducts();
-//   }
-
-//   getCartProducts() {
-//     if ("cart" in localStorage) {
-//       this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
-
-//     }
-//   }
-
-//   getCartItemCount(): number {
-//     return this.cartProducts.length;
-//   }
-
-//   addToCart(product: any) {
-//     this.cartProducts.push(product);
-//   }
-// }
-
-
-// getCartItemCount(): number {
-//   return this.cartProducts.length;
-// }

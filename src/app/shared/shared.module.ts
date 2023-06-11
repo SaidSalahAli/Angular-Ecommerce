@@ -35,6 +35,7 @@ import { BannerComponent } from './components/banner/banner.component';
     SelectComponent,
     FooterComponent,
     BannerComponent
+    
   ]
 })
 export class SharedModule { }

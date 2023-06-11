@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CartsModule } from './carts/carts.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
+import { LoginInModule } from './login-in/login-in.module';
+
 
 
 @NgModule({
@@ -16,8 +18,10 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     ProductsModule,
-    // CartsModule,
-    SharedModule
+    CartsModule,
+    SharedModule,
+    LoginInModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

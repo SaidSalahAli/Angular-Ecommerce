@@ -1,0 +1,181 @@
+<form
+  class="h-100 "
+  [formGroup]="userRegisterForm"
+  (ngSubmit)="submit()"
+>
+  <div
+    class="container py-5 h-100 w-100 bg-whit d-flex justify-content-center align-items-center"
+  >
+    <div class="row container_row">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="card-body p-md-5 text-black">
+            <div class="sing_in" >
+
+            <h1 class="text-uppercase d-flex justify-content-center">
+              Sign In
+            </h1>
+            <div class="row ">
+              <div class="form-outline">
+                <label class="form-label label-up" for="form3Example1m"
+                  >Full name</label
+                >
+                <input
+                  type="text"
+                  formControlName="fullName"
+                  id="fName"
+                  name="fName"
+                  class="form-control form-control-lg"
+                  [class.is-invalid]="fullName?.invalid && fullName?.touched"
+                  [class.is-valid]="fullName?.touched && fullName?.touched"
+                />
+
+                <!-- Validation messages for Full Name -->
+                <div
+                  class="alert alert-warning"
+                  [hidden]="!fullName?.touched || !fullName?.errors"
+                >
+                  <small *ngIf="fullName?.errors?.['required']"
+                    >Full Name is required</small
+                  >
+                  <small *ngIf="fullName?.errors?.['pattern']">
+                    Full name must be at least 3 letters (
+                    {{fullName?.errors?.['pattern'].actualValue}}) doesn't match
+                  </small>
+                </div>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="form-outline mb-4">
+              <label class="form-label label-up" for="email">Email</label>
+              <input
+                type="email"
+                formControlName="email"
+                id="email"
+                name="email"
+                class="form-control form-control-lg"
+                [class.is-invalid]="email?.invalid && email?.touched"
+                [class.is-valid]="email?.touched && email?.touched"
+              />
+              <!-- Validation messages for Email -->
+              <div
+                class="alert alert-warning"
+                [hidden]="!email?.touched || !email?.errors"
+              >
+                <small *ngIf="email?.errors?.['required']"
+                  >Email is required</small
+                >
+                <small *ngIf="email?.errors?.['EmailNotValid']">
+                  Email must contain '@', and the value '{{ email?.errors?.['EmailNotValid'].value
+
+                  }}' doesn't match the required format.
+                </small>
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="mb-3">
+              <label class="form-label label-up" for="uPassword"
+                >Password</label
+              >
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control form-control-lg"
+                id="uPassword"
+                name="confirmPassword"
+                [class.is-invalid]="
+                  confirmPassword?.value !== password?.value ||
+                  (confirmPassword?.touched && confirmPassword?.invalid) ||
+                  (password?.touched && password?.value?.length < 8)
+                "
+                [class.is-valid]="
+                  confirmPassword?.value === password?.value &&
+                  confirmPassword?.touched &&
+                  !confirmPassword?.invalid &&
+                  password?.touched &&
+                  password?.value?.length >= 8
+                "
+              />
+              <div
+                class="alert alert-warning"
+                *ngIf="(confirmPassword?.touched && password?.touched) && 
+                (confirmPassword?.invalid || userRegisterForm?.errors?.['passwordTooShort'] ||
+                 userRegisterForm?.errors?.['passwordContainsName'] || userRegisterForm?.errors?.['UnmatchedPassword'] )"
+              >
+                <small *ngIf="confirmPassword?.errors?.['required']"
+                  >Confirm Password is required</small
+                >
+                <small *ngIf="userRegisterForm?.errors?.['UnmatchedPassword']"
+                  >Confirm Password must match the password.</small
+                >
+                <small *ngIf="userRegisterForm?.errors?.['passwordTooShort']"
+                  >Password must be at least 8 characters long.</small
+                >
+                <small
+                  *ngIf="userRegisterForm?.errors?.['passwordContainsName']"
+                  >Password cannot contain the name.</small
+                >
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label label-up" for="uConfirmPassword"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                formControlName="confirmPassword"
+                class="form-control form-control-lg"
+                id="uConfirmPassword"
+                name="confirmPassword"
+                [class.is-invalid]="
+                  confirmPassword?.value !== password?.value ||
+                  (confirmPassword?.touched && confirmPassword?.invalid) ||
+                  (password?.touched && password?.value?.length < 8)
+                "
+                [class.is-valid]="
+                  confirmPassword?.value === password?.value &&
+                  confirmPassword?.touched &&
+                  !confirmPassword?.invalid &&
+                  password?.touched &&
+                  password?.value?.length >= 8
+                "
+              />
+              <!-- Validation messages for Confirm Password -->
+              <div
+                class="alert alert-warning"
+                *ngIf="(confirmPassword?.touched && password?.touched) &&
+                        (confirmPassword?.invalid || userRegisterForm?.errors?.['passwordTooShort'] ||
+                         userRegisterForm?.errors?.['passwordContainsName'] || userRegisterForm?.errors?.['UnmatchedPassword'])"
+              >
+                <small *ngIf="confirmPassword?.errors?.['required']"
+                  >Confirm Password is required</small
+                >
+                <small *ngIf="userRegisterForm?.errors?.['UnmatchedPassword']"
+                  >Confirm Password must match the password.</small
+                >
+                <small *ngIf="userRegisterForm?.errors?.['passwordTooShort']"
+                  >Password must be at least 8 characters long.</small
+                >
+                <small
+                  *ngIf="userRegisterForm?.errors?.['passwordContainsName']"
+                  >Password cannot contain the name.</small
+                >
+              </div>
+            </div>
+            <!-- <mat-icon>person</mat-icon> -->
+            <!-- Submit button -->
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="userRegisterForm.invalid || !userRegisterForm.touched"
+              (ngSubmit)="submit()"
+            >
+              Submit
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
