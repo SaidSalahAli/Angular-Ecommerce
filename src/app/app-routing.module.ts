@@ -6,6 +6,7 @@ import { ProductsDetailsComponent } from './products/components/products-details
 import { AuthGuard } from './Garurds/auth.guard';
 import { LoginComponent } from './login-in/components/login/login.component';
 import { RegisterComponent } from './login-in/components/register/register.component';
+import { LogoutComponent } from './login-in/components/logout/logout.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: "**", redirectTo: "products", pathMatch: "full" }
 ];
 
