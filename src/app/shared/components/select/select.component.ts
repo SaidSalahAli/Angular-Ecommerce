@@ -10,7 +10,6 @@ export class SelectComponent implements OnInit {
   @Input() data:any[] = []
   @Output() selectedValue = new EventEmitter()
   constructor() { }
-
   ngOnInit(): void {
   }
 

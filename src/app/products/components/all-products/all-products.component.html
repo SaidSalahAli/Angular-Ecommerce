@@ -5,8 +5,8 @@
   <app-select [data]="categories" [title]="'Categories'" (selectedValue)="filterCategory($event)"></app-select>
 </div>
 <div class="container d-flex justify-content-center mt-100 mb-50">
-  <div class="row" *ngIf="!loading">
-    <div class="col-md-3 mt-4" *ngFor="let prd of products">
+  <div class="row row-cols-2   row-cols-lg-4" *ngIf="!loading">
+    <div class="col-md-3 h-20 mt-4" *ngFor="let prd of products">
       <app-product [data]="prd" (addToCartClicked)="addToCart($event)"></app-product>
     </div>
   </div>

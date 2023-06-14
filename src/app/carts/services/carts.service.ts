@@ -1,40 +1,50 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+import { Product } from 'src/app/products/models/product';
 @Injectable({
   providedIn: 'root'
 })
 export class CartsService {
-  cartProduct: any[] = [];
+  cartProducts: any[] = [];
   itemCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  cartChange: Subject<void> = new Subject<void>(); // إضافة حقل cartChange من نوع Subject<void>
+  cartChange: Subject<void> = new Subject<void>();
+
   constructor() {
     this.getCartProducts();
     this.updateItemCount();
- 
   }
 
   getCartProducts() {
-    if ("cart" in localStorage) {
-    return this.cartProduct = JSON.parse(localStorage.getItem("cart")!);
-    }
+  if ("cart" in localStorage) {
+    return this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
   }
+}
+
+
   getCartItemCount(): number {
-    return this.cartProduct.length;
+    return this.cartProducts.length;
+    
   }
 
   updateItemCount() {
-   return this.itemCount.next(this.cartProduct.length);
-  }
+     this.itemCount.next(this.cartProducts.length);
 
-  addToCart(product: any) {
-    this.cartProduct.push(product);
+  }
+  addToCart(product: Product, quantity: number) {
+    // قم بتحديث العنصر المضاف ليحتوي على الكمية المحددة
+    const item = {
+      product: product,
+      quantity: quantity
+    };
+    this.cartProducts.push(item);
+    this.updateItemCount()
+  }
+  renoveall() {
+    this.cartProducts = [];
     this.updateItemCount();
-    this.cartChange.next(); 
   }
-
   removeFromCart(index: number) {
-    this.cartProduct.splice(index, 1);
+    this.cartProducts.splice(index, 1);
     this.updateItemCount();
     this.cartChange.next();
   }

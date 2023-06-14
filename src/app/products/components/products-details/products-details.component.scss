@@ -1,17 +1,20 @@
-.box {
-    width: 90%;
-    margin:100px auto;
-    height: 500px;
-
-    ul {
-        li {
-            font-size: 22px; 
-            margin: 20px 0;
-        }
-    }
-    img {
-        width: 100%;
-        max-height: 500px;
-        min-height: 500px;
-    }
-}
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+  
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }
+  .container{
+    background-color:var(--min-color);
+  }
+  .discount{
+    color: red;
+    padding: 2px;
+    font-size: 18px;
+  }
+  .count{
+    padding: 50px;
+  }

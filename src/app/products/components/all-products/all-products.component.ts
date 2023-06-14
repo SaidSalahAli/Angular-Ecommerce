@@ -15,7 +15,7 @@ export class AllProductsComponent implements OnInit {
   itemCount: number = 0;
   @Output() itemCountChange = new EventEmitter<number>();
   constructor(private service: ProductsService) { }
-
+  
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
@@ -24,11 +24,13 @@ export class AllProductsComponent implements OnInit {
     this.itemCount = this.cartProducts.length;
     this.itemCountChange.emit(this.itemCount);
   }
+
   getProducts() {
     this.loading = true;
     this.service.getAllProducts().subscribe(
       (res: any) => {
-        this.products = res;
+        this.products = res.products;
+        console.log(this.products);
         this.loading = false;
       },
       error => {
@@ -36,6 +38,7 @@ export class AllProductsComponent implements OnInit {
         alert(error);
       }
     );
+    console.log(this.categories)
   }
 
   getCategories() {
@@ -62,7 +65,8 @@ export class AllProductsComponent implements OnInit {
     this.service.getProductsByCategory(keyword).subscribe(
       (res: any) => {
         this.loading = false;
-        this.products = res;
+        console.log(this.categories)
+        this.products = res.products;
       }
     );
   }

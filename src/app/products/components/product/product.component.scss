@@ -1,8 +1,8 @@
 /* Card container */
 .card {
-  border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
+  background-color: var(--min-color);
 }
 
 /* Card image */
@@ -50,10 +50,14 @@
   width: 70%;
   margin-right: 10px;
 }
-
+.discount{
+  color: red;
+  padding: 2px;
+  font-size: 18px;
+}
 /* Add button */
 .bg-cart {
-  background-color: #007bff;
+  background: var(--button-color);
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -62,5 +66,5 @@
 }
 
 .bg-cart:hover {
-  background-color: #0056b3;
+  background: var(--button-color);
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartsService } from 'src/app/carts/services/carts.service';
 
 @Component({
@@ -7,14 +7,14 @@ import { CartsService } from 'src/app/carts/services/carts.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cartProducts!: any[];
+  cartProducts: any[]=[];
   total: number = 0;
   success: boolean = false;
 
   constructor(private update: CartsService) {}
 
   ngOnInit(): void {
-    this.cartProducts = this.update.getCartProducts();
+    this.cartProducts= this.update.getCartProducts();
     this.getCartTotal();
     console.log(this.cartProducts);
   }
@@ -33,15 +33,18 @@ export class CartComponent implements OnInit {
 
   detectChange() {
     this.updateCart();
+    this.update.updateItemCount()
   }
 
   deleteProduct(index: number) {
     this.cartProducts.splice(index, 1);
     this.updateCart();
+    this.update.updateItemCount()
   }
 
   clearCart() {
     this.cartProducts = [];
+    this.update.renoveall()
     this.updateCart();
   }
 
@@ -51,25 +54,21 @@ export class CartComponent implements OnInit {
       this.total += this.cartProducts[x].item.price * this.cartProducts[x].quantity;
     }
   }
-
   addCart() {
     let products = this.cartProducts.map(item => {
-      return { productId: item.item.id, quantity: item.quantity }
+      return { productId: item.item.id, quantity: item.quantity };
     });
-    this.getCartTotal();
-    if(products.length === 0) {
-      alert('No products found')
-    // Display the success message
-
-    }else{
+    
+    if (products.length === 0) {
+      alert('No products found');
+      // Display the success message
+    } else {
       this.success = true;
     }
-    
   }
 
   private updateCart() {
     localStorage.setItem("cart", JSON.stringify(this.cartProducts));
-    this.update.updateItemCount();
     this.getCartTotal();
   }
 }

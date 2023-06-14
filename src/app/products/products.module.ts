@@ -5,6 +5,7 @@ import { ProductsDetailsComponent } from './components/products-details/products
 import { SharedModule } from '../shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProductComponent } from './components/product/product.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,6 +17,7 @@ import { ProductComponent } from './components/product/product.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule
   ]
 })

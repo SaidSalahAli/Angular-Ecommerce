@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
+:root {
+    --dark-color: #284b63;
+    --min-color: #ffffff;
+    --button-color: #353535;
+    --background-color: #eae8e8;
+    --active-color: #E53935;
+  }
 body {
     padding: 0;
     margin: 0!important;
+   background: var(   --background-color);
 }
 li{
     cursor: pointer;

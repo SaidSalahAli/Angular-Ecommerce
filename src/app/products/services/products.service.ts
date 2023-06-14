@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+  }
   getAllProducts() {
     return this.http.get(environment.baseApi +'products')
   }
