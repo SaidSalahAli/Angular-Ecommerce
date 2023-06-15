@@ -5,11 +5,6 @@
   background-color: var(--min-color);
 }
 
-/* Card image */
-// .card-img {
-//   object-fit: cover;
-// }
-
 /* Card body */
 .card-body {
   padding: 10px;
@@ -33,9 +28,9 @@
 }
 
 /* Stars (assuming it will be used for ratings) */
-.stars {
-  /* Add your styles for displaying stars */
-}
+// .stars {
+//   /* Add your styles for displaying stars */
+// }
 
 /* Add to cart button and input field */
 .cont_btn {
@@ -63,8 +58,8 @@
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.bg-cart:hover {
+  
+&:hover {
   background: var(--button-color);
+}
 }

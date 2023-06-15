@@ -1,65 +1,104 @@
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light ">
+<div>
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
   <!-- Container wrapper -->
-  <div class="container">    
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent1"
-      aria-controls="navbarSupportedContent1"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
+  <div class="container d-flex">
+    <!-- Navbar brand -->
+    <span class="navbar-brand mt-2 mt-sm-0" routerLink="/">Said</span>
+    <!-- Navbar toggler button -->
+  
 
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
-      <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-sm-0" href="https://mdbootstrap.com/">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="20"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-      </a>
-
-      <!-- Left links -->      
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            routerLink="/cart"
+            routerLinkActive="active"
+          >
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">{{
+              itemCount
+            }}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.facebook.com/alhdre.s"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/said-salah-a064a5234"><i class="fab fa-linkedin"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/SaidSalahAli"><i class="fa-brands fa-github"></i></a>
+        </li>
+      </ul>
     </div>
-    <!-- Collapsible wrapper -->
-
-    <!-- Right elements -->
-    <div class="d-flex align-items-center">
-          <!-- Left links -->
-          <ul class="navbar-nav  me-3">
-            <li class="nav-item active" routerLink="/home" routerLinkActive="active" >
-             Home
-            </li>
-          </ul>
-      <!-- Icon -->
-      <a class="nav-link me-3" href="#" routerLink="/cart" routerLinkActive="active">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="badge rounded-pill badge-notification bg-danger" >{{ itemCount }}</span>
-      </a>
-
-      <a class="nav-link me-3" href="#">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a class="nav-link me-3" href="#">
-        <i class="fab fa-twitter"></i>
-      </a>
-      
-      <li *ngIf="!islogined" class="border rounded px-2 nav-link" routerLink="/login" routerLinkActive="active" target="_blank">
-        Login
+    <ul class="navbar-nav ms-auto">
+      <li *ngIf="!islogined" class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          target="_blank"
+          >Login</a
+        >
       </li>
-      <li *ngIf="islogined" class="border rounded px-2 nav-link" routerLink="/logout" routerLinkActive="active"target="_blank">
-        Logout
-      </li>      
-    </div>
-    <!-- Right elements -->
+      <li *ngIf="islogined" class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/logout"
+          routerLinkActive="active"
+          target="_blank"
+          >Logout</a
+        >
+      </li>
+    </ul>
+    <button
+    (click)="isMenuOpenn()"
+    class="btn hading"
+    type="button"
+  >
+    <i class="fa-solid fa-bars"></i>
+  </button>
   </div>
-  <!-- Container wrapper -->
+  <div class="menu-btn" *ngIf="isMenuOpen ">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="closeMenu()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a
+          (click)="closeMenu()"
+          class="nav-link"
+          href="#"
+          routerLink="/cart"
+          routerLinkActive="active"
+        >
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge rounded-pill badge-notification bg-danger">{{
+            itemCount
+          }}</span>
+        </a>
+      </li>
+      <div class="souial_icons">
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.facebook.com/alhdre.s"><i class="fab fa-facebook-f"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.linkedin.com/in/said-salah-a064a5234"><i class="fab fa-linkedin"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/SaidSalahAli"><i class="fa-brands fa-github"></i></a>
+      </li>
+    </div>
+
+  </div>
 </nav>
+

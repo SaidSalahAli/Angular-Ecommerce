@@ -9,6 +9,8 @@ import { UserAuthService } from 'src/app/login-in/services/user-auth.service';
 })
 export class HeaderComponent implements OnInit {
   itemCount: number = 0;
+  isMenuOpen:boolean =false
+  
   constructor(private cartsService: CartsService, private authService: UserAuthService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
@@ -22,11 +24,18 @@ export class HeaderComponent implements OnInit {
       this.itemCount = this.cartsService.getCartItemCount();
     });
   }
+  
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 
   get islogined(): boolean {
     return this.authService.isUserLogged;
   }
 
+  isMenuOpenn(){
+    this.isMenuOpen = !this.isMenuOpen
+  }
   logout(): void {
     // Perform logout logic
     this.authService.logout();

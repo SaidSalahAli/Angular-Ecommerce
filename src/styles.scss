@@ -6,6 +6,13 @@
     --background-color: #eae8e8;
     --active-color: #E53935;
   }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Oswald', sans-serif;
+  }
 body {
     padding: 0;
     margin: 0!important;
@@ -14,3 +21,5 @@ body {
 li{
     cursor: pointer;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

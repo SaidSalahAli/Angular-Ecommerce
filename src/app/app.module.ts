@@ -7,7 +7,8 @@ import { CartsModule } from './carts/carts.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginInModule } from './login-in/login-in.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -21,6 +22,8 @@ import { LoginInModule } from './login-in/login-in.module';
     CartsModule,
     SharedModule,
     LoginInModule,
+    BrowserAnimationsModule,
+   
 
   ],
   providers: [],
