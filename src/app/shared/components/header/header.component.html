@@ -1,28 +1,27 @@
-<!-- Navbar -->
-<div>
-
-
 <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-  <!-- Container wrapper -->
-  <div class="container d-flex">
-    <!-- Navbar brand -->
-    <span class="navbar-brand mt-2 mt-sm-0" routerLink="/">Said</span>
-    <!-- Navbar toggler button -->
-  
-
-    <!-- Navbar links -->
+  <div class="container navbar navbar-expand-lg navbar-light">
+    <span class="navbar-brand mt-2 mt-sm-0" routerLink="/">GoCart</span>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+          <a class="nav-link" href="https://www.facebook.com/alhdre.s"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
-            href="#"
-            routerLink="/cart"
-            routerLinkActive="active"
-          >
+            href="https://www.linkedin.com/in/said-salah-a064a5234"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/SaidSalahAli"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="said">
             <i class="fas fa-shopping-cart"></i>
             <span class="badge rounded-pill badge-notification bg-danger">{{
               itemCount
@@ -30,56 +29,60 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://www.facebook.com/alhdre.s"><i class="fab fa-facebook-f"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.linkedin.com/in/said-salah-a064a5234"><i class="fab fa-linkedin"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/SaidSalahAli"><i class="fa-brands fa-github"></i></a>
+          <a
+            class="nav-link"
+            routerLinkActive="said"
+            routerLink=""
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
         </li>
       </ul>
     </div>
     <ul class="navbar-nav ms-auto">
       <li *ngIf="!islogined" class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="/login"
-          routerLinkActive="active"
-          target="_blank"
+        <a class="nav-link" routerLink="/login" routerLinkActive="said"
           >Login</a
         >
       </li>
       <li *ngIf="islogined" class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="/logout"
-          routerLinkActive="active"
-          target="_blank"
+        <a class="nav-link" routerLink="/logout" routerLinkActive="said"
           >Logout</a
         >
       </li>
-    </ul>
-    <button
-    (click)="isMenuOpenn()"
-    class="btn hading"
-    type="button"
-  >
-    <i class="fa-solid fa-bars"></i>
-  </button>
-  </div>
-  <div class="menu-btn" *ngIf="isMenuOpen ">
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="closeMenu()">Home</a>
+        <a
+          class="nav-link"
+          routerLinkActive="said"
+          routerLink="/search"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </li>
+    </ul>
+    <button (click)="isMenuOpenn()" class="btn hading" type="button">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div class="menu-btn" [ngClass]="{ open: isMenuOpen }">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="said"
+          (click)="closeMenu()"
+          >Home</a
+        >
       </li>
       <li class="nav-item">
         <a
           (click)="closeMenu()"
           class="nav-link"
-          href="#"
           routerLink="/cart"
-          routerLinkActive="active"
+          routerLinkActive="said"
         >
           <i class="fas fa-shopping-cart"></i>
           <span class="badge rounded-pill badge-notification bg-danger">{{
@@ -87,18 +90,25 @@
           }}</span>
         </a>
       </li>
-      <div class="souial_icons">
+    </ul>
+    <div class="souial_icons">
       <li class="nav-item">
-        <a class="nav-link" href="https://www.facebook.com/alhdre.s"><i class="fab fa-facebook-f"></i></a>
+        <a class="nav-link" href="https://www.facebook.com/alhdre.s"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://www.linkedin.com/in/said-salah-a064a5234"><i class="fab fa-linkedin"></i></a>
+        <a
+          class="nav-link"
+          href="https://www.linkedin.com/in/said-salah-a064a5234"
+          ><i class="fab fa-linkedin"></i
+        ></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/SaidSalahAli"><i class="fa-brands fa-github"></i></a>
+        <a class="nav-link" href="https://github.com/SaidSalahAli"
+          ><i class="fa-brands fa-github"></i
+        ></a>
       </li>
     </div>
-
   </div>
 </nav>
-

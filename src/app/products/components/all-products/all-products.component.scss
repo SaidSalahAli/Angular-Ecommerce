@@ -2,3 +2,62 @@
 img{
     height: 60vh;
 }
+.title{
+  margin-top: 35px;
+  margin-left: 110px;
+  color: var(--min-color);
+  font-size: x-large;
+}
+
+.containe { 
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #A5BA8D #F0F0F0;
+  }
+  
+  .containe::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+    border-radius: 5px;
+  }
+  
+  .containe::-webkit-scrollbar-track {
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    width: 70px;;
+  }
+  
+  .containe::-webkit-scrollbar-thumb {
+    background-color: #A5BA8D;
+    border-radius: 4px;
+  }
+  
+  .containe::-webkit-scrollbar-thumb:hover {
+    background-color: #7E9645;
+  }
+  
+
+
+  @media (max-width: 767px) {
+    .containe {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+    }
+    .title{
+      margin-left:20px ;
+      font-size: medium;
+    }
+  
+    .col-md-3 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  
+  
+  @media (max-width: 420px) {
+ 
+  }

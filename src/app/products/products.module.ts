@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProductComponent } from './components/product/product.component';
 import { FormsModule } from '@angular/forms';
+import { SearshComponent } from '../shared/components/searsh/searsh.component';
 
 
 
@@ -13,12 +14,13 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AllProductsComponent,
     ProductsDetailsComponent,
-    ProductComponent
+    ProductComponent,
+    SearshComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class ProductsModule { }

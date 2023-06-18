@@ -13,12 +13,16 @@ export class AllProductsComponent implements OnInit {
   loading: boolean = false;
   cartProducts: any[] = [];
   itemCount: number = 0;
+  topRating: Product [] =[]
   @Output() itemCountChange = new EventEmitter<number>();
   constructor(private service: ProductsService) { }
   
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
+    this.getTopRatedProducts();
+    console.log(this.topRating)
+    console.log(this.products)
   }
   updateItemCount() {
     this.itemCount = this.cartProducts.length;
@@ -30,7 +34,7 @@ export class AllProductsComponent implements OnInit {
     this.service.getAllProducts().subscribe(
       (res: any) => {
         this.products = res.products;
-        console.log(this.products);
+        console.log(this.products)
         this.loading = false;
       },
       error => {
@@ -38,9 +42,22 @@ export class AllProductsComponent implements OnInit {
         alert(error);
       }
     );
-    console.log(this.categories)
-  }
 
+  }
+  getTopRatedProducts() {
+    this.loading = true;
+    this.service.getAllProducts().subscribe(
+      (res: any) => {
+        this.topRating = res.products.filter((product: Product) => product.rating > 4.5);
+        this.loading = false;
+  
+      },
+      error => {
+        this.loading = false;
+        alert(error);
+      }
+    );
+  }
   getCategories() {
     this.loading = true;
     this.service.getAllCategories().subscribe(
@@ -86,4 +103,16 @@ export class AllProductsComponent implements OnInit {
       localStorage.setItem("cart", JSON.stringify(this.cartProducts));
     }
   }
+  navigateToPrevious() {
+    setTimeout(() => {
+      // انفذ التنقل إلى المنتج السابق
+    }, 1000);
+  }
+  
+  navigateToNext() {
+    setTimeout(() => {
+      // انفذ التنقل إلى المنتج التالي
+    }, 1000);
+  }
+  
 }

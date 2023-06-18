@@ -1,0 +1,23 @@
+<div class="row m-1">
+  <div class="product-grid">
+    <div class="product-image">
+      <a class="image">
+        <img src="{{ data.thumbnail }}" class="enlarge-on-hover" />
+      </a>
+      <span class="product-discount-label">-{{ data.discountPercentage }}%</span>
+      <ul class="product-links">
+        <li>
+          <a [routerLink]="['/details', data.id]"><i class="fa fa-search"></i></a>
+        </li>
+        <li>
+          <a (click)="addToCart()"><i class="fa-solid fa-cart-shopping"></i></a>
+        </li>
+      </ul>
+      <div class="add-to-cart">
+        <span [innerHTML]="getStarRating(data.rating)"></span>
+        <span class="ms-1">{{ data.rating }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+

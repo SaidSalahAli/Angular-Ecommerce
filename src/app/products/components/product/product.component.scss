@@ -1,65 +1,157 @@
-/* Card container */
-.card {
-  border-radius: 5px;
+
+.product-grid {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+
+}
+
+.product-grid .product-image {
   overflow: hidden;
-  background-color: var(--min-color);
+  position: relative;
+
+
+  z-index: 1;
 }
 
-/* Card body */
-.card-body {
-  padding: 10px;
+.product-grid .product-image a.image {
+  display: block;
+
 }
 
-/* Card title */
-.card-body a {
-  text-decoration: none;
-  color: #333;
+.product-grid .product-image img {
+  width: 100%;
+  height: 26vh;
 }
 
-.card-body a:hover {
-  text-decoration: underline;
-}
-
-/* Price */
-.price {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #333;
-}
-
-/* Stars (assuming it will be used for ratings) */
-// .stars {
-//   /* Add your styles for displaying stars */
-// }
-
-/* Add to cart button and input field */
-.cont_btn {
-  margin-top: 10px;
-}
-
-.cont_btn .btn-primary {
-  width: 50%;
-}
-
-.cont_btn .form-control {
-  width: 70%;
-  margin-right: 10px;
-}
-.discount{
-  color: red;
-  padding: 2px;
-  font-size: 18px;
-}
-/* Add button */
-.bg-cart {
-  background: var(--button-color);
+.product-grid .product-discount-label {
   color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  
-&:hover {
-  background: var(--button-color);
+  background: var(--active-color);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 25px;
+  padding: 0 20px;
+  position: absolute;
+  top: 10px;
+  left: 0;
 }
+
+.product-grid .product-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 10px;
+  right: -50px;
+  transition: all .5s ease 0s;
+}
+
+.product-grid:hover .product-links {
+  right: 10px;
+}
+
+.product-grid .product-links li a {
+  color: #333;
+  background: transparent;
+  font-size: 17px;
+  line-height: 38px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #333;
+  border-bottom: none;
+  display: block;
+  transition: all 0.3s;
+}
+
+.product-grid .product-links li:last-child a {
+  border-bottom: 1px solid #333;
+}
+
+.product-grid .product-links li a:hover {
+  color: #fff;
+  background: #333;
+}
+
+.product-grid .add-to-cart {
+  background: transparent;
+  color:var(--stars-color);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
+  padding: 10px 26px;
+  position: absolute;
+  left: 0;
+  bottom: -87px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.product-grid:hover .add-to-cart {
+  bottom: 0;
+}
+
+.product-grid .add-to-cart:hover {
+  text-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  color: var(--stars-color);
+}
+
+.product-grid .product-content {
+  background:var(--min-color);
+  padding: 5px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+.product-grid .title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0 7px;
+}
+
+.product-grid .title a {
+  color: #777;
+  transition: all 0.3s ease 0s;
+}
+
+.product-grid .title a:hover {
+  color: #a5ba8d;
+}
+
+.product-grid .price {
+  color: #0d0d0d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-grid .price span {
+  color: #888;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+.enlarge-on-hover {
+  transition: transform 0.3s ease;
+}
+
+.enlarge-on-hover:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 990px) {
+  .product-grid {
+
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  .product-grid .title a {
+    color: #777;
+    transition: all 0.3s ease 0s;
+    font-size: smaller;
+  }
+  .product-grid .add-to-cart {
+   font-size: smaller;
+  }
 }

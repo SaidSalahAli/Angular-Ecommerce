@@ -13,6 +13,10 @@ export class ProductsService {
     return this.http.get(environment.baseApi +'products')
   }
   
+  getProductsByRating(rating: number) {
+    return this.http.get(environment.baseApi + 'products/rating/' + rating);
+  }
+  
   getAllCategories() {
     return this.http.get(environment.baseApi +'products/categories')
   }
@@ -26,5 +30,8 @@ export class ProductsService {
   
   getProductsByType(type: string) {
     return this.http.get(environment.baseApi + 'products?type=' + type);
+  }
+  getProductsBySearch(query: string) {
+    return this.http.get(`${environment.baseApi}products/search?q=${query}`);
   }
 }

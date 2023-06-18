@@ -1,25 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
-    --dark-color: #284b63;
-    --min-color: #ffffff;
-    --button-color: #353535;
-    --background-color: #eae8e8;
-    --active-color: #E53935;
-  }
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-    font-family: 'Oswald', sans-serif;
-  }
+  --dark-color: #242423;
+  --stars-color: #ffb703;
+  --min-color: #ffffff;
+  --button-color: #353535;
+  --background-color: linear-gradient(to right, #242423, #6d676e);
+  --active-color: #E53935;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Oswald', sans-serif;
+}
+
 body {
-    padding: 0;
-    margin: 0!important;
-   background: var(   --background-color);
+  padding: 0;
+  margin: 0!important;
+  background: var(--background-color);
 }
-li{
-    cursor: pointer;
+
+li {
+  cursor: pointer;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

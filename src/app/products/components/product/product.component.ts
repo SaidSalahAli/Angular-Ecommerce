@@ -8,7 +8,7 @@ import { CartsService } from 'src/app/carts/services/carts.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  @Input() data!:any
+  @Input() data!:Product
   @Output() addToCartClicked = new EventEmitter<any>();
   addButton:boolean = false;
   amount:number = 0

@@ -1,0 +1,18 @@
+<div class="container">
+  
+
+<div class="form-outline mb-4" style="margin-top: 75px;">
+  <input  #searsh type="search" placeholder="Search" class="form-control" id="datatable-search-input" [(ngModel)]="searchQuery" (ngModelChange)="onSearchQueryChange()">
+</div>
+
+<div id="datatable">
+  <div class="row row-cols-2 row-cols-lg-4">
+    <div *ngIf="searchProduct == null">
+    <h1>لا يوجد نتائج</h1>
+    </div>
+    <div class="col-md-3 h-20 mt-4" *ngFor="let product of searchProduct">
+      <app-rating [data]="product" (addToCartClicked)="addToCart(product)"></app-rating>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,53 +1,58 @@
-<div class="card h-100 shadow bo">
-  <div class="card-body">
-    <div class="card-img-actions">
-      <img
-        src="{{ data.thumbnail }}"
-        class="card-img"
-        width="50"
-        height="200"
-        alt=""
-      />
+
+<div class="row">
+  <div>
+    <div class="product-grid">
+      <div class="product-image">
+        <a class="image">
+          <img src="{{ data.thumbnail }}" class="enlarge-on-hover" />
+        </a>
+        <span class="product-discount-label"
+          >-{{ data.discountPercentage }}%</span
+        >
+        <ul class="product-links">
+          <li>
+            <a [routerLink]="['/details', data.id]"
+              ><i class="fa fa-search"></i
+            ></a>
+          </li>
+          <li>
+            <a (click)="addToCart()"
+              ><i class="fa-solid fa-cart-shopping"></i
+            ></a>
+          </li>
+        </ul>
+        <div class="add-to-cart">
+          <span [innerHTML]="getStarRating(data.rating)"></span>
+          <span class="ms-1">{{ data.rating }}</span>
+        </div>
+      </div>
+      <div class="product-content" routerLink="/details/{{ data.id }}">
+        <h3 class="title">
+          <a class="product-content">{{
+            data.title.length > 15
+              ? data.title.substring(0, 15) + "..."
+              : data.title
+          }}</a>
+        </h3>
+        <div class="price">${{ data.price }}</div>
+      </div>
     </div>
   </div>
-  <div
-    class="card-body bg-light text-start h-50 d-flex flex-column justify-content-between"
-  >
-    <div class="">
-      <div class="" routerLink="/details/{{ data.id }}">
-        <a class="font-weight-semibold" [routerLink]="['/details', data.id]">{{
-          data.title.length > 20
-            ? data.title.substring(0, 40) + "..."
-            : data.title
-        }}</a>
+  <div class="col-md-3 col-sm-6">
+    <div class="product-grid">
+      <div class="product-image">
+        <ul class="product-links">
+          <li>
+            <a href="#"><i class="fa fa-search"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-heart"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+          </li>
+        </ul>
       </div>
-     
-     <div class="">
-        <span class="h5">${{ data.price }}</span>
-    </div>
-    <span class="discount mb-3">-{{ data.discountPercentage }}%</span>
-  
-      <div class="d-flex flex-row mb-3 font-size-50"
-      >
-        <div class="text-warning mb-1 me-2">
-          <span [innerHTML]="getStarRating(data.rating)"></span>
-          <span class="ms-1">
-            {{ data.rating }}
-          </span>
-        </div>
-      <span class="text-success ms-2">{{ data.stock}}</span>
-    </div>
-    </div>
-    <div class=" text-center d-flex justify-content-between" 
-    >
-        <button class=" bg-cart" (click)="addButton = true" *ngIf="!addButton">
-          <i class="fas fa-shopping-cart"></i>
-        </button>
-        <div class="d-flex w-50" *ngIf="addButton">
-          <input type="number" class="form-control" [(ngModel)]="amount" />
-          <button type="button" class="bg-cart" (click)="addToCart() ; addButton =false">
-            Add
-          </button>
     </div>
   </div>
 </div>

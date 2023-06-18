@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { RatingComponent } from './components/rating/rating.component';
+import { SearshComponent } from './components/searsh/searsh.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { MatListModule } from '@angular/material/list';
     SpinnerComponent,
     SelectComponent,
     FooterComponent,
-    BannerComponent
+    BannerComponent,
+    RatingComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,7 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatBadgeModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
    
   ],
   exports : [
@@ -48,7 +51,9 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     SelectComponent,
     FooterComponent,
-    BannerComponent
+    BannerComponent,
+    RatingComponent,
+
     
   ]
 })
