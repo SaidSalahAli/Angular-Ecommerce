@@ -1,17 +1,16 @@
 <app-banner [products]="products"></app-banner>
 
 <h1 class="title">Top Rated</h1>
-<div
-  class="container containe d-flex justify-content-center"
-  style="overflow-x: auto"
->
-  <div class="col-md-3" *ngFor="let rating of topRating">
+
+<owl-carousel-o [options]="customOptions"class="container containe d-flex justify-content-center"
+style="overflow-x: auto">
+  <ng-template carouselSlide  class="col-md-3" *ngFor="let rating of topRating; let i = index">
     <app-rating
       [data]="rating"
       (addToCartClicked)="addToCart($event)"
     ></app-rating>
-  </div>
-</div>
+  </ng-template>
+</owl-carousel-o>
 
 <h1 class="title">ALL Products</h1>
 <div class="my-2">

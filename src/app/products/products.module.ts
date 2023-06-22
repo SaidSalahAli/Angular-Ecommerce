@@ -7,9 +7,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ProductComponent } from './components/product/product.component';
 import { FormsModule } from '@angular/forms';
 import { SearshComponent } from '../shared/components/searsh/searsh.component';
+// import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [
     AllProductsComponent,
@@ -21,6 +25,12 @@ import { SearshComponent } from '../shared/components/searsh/searsh.component';
     CommonModule,
     FormsModule,
     SharedModule,
+    NgImageSliderModule,
+    NgbModule,
+    MatIconModule,
+    MatButtonModule,
+    CarouselModule
+
   ]
 })
 export class ProductsModule { }

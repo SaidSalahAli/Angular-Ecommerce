@@ -21,8 +21,9 @@ export class CartsService {
 }
 
 
-  getCartItemCount(): number {
-    return this.cartProducts.length;
+  getCartItemCount() {
+    return this.getCartProducts().length;
+
     
   }
 
@@ -31,21 +32,23 @@ export class CartsService {
 
   }
   addToCart(product: Product, quantity: number) {
-    // قم بتحديث العنصر المضاف ليحتوي على الكمية المحددة
     const item = {
       product: product,
       quantity: quantity
     };
     this.cartProducts.push(item);
     this.updateItemCount()
+    console.log(this.getCartProducts().length)
   }
   renoveall() {
     this.cartProducts = [];
     this.updateItemCount();
+    this.getCartItemCount()
   }
   removeFromCart(index: number) {
     this.cartProducts.splice(index, 1);
     this.updateItemCount();
     this.cartChange.next();
+    this.getCartItemCount()
   }
 }

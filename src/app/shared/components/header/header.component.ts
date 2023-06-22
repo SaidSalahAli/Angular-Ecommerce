@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CartsService } from 'src/app/carts/services/carts.service';
 import { UserAuthService } from 'src/app/login-in/services/user-auth.service';
+import { SmoothscrollService } from 'src/app/smoothscroll.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,11 @@ export class HeaderComponent implements OnInit {
   itemCount: number = 0;
   isMenuOpen:boolean =false
   
-  constructor(private cartsService: CartsService, private authService: UserAuthService, private cdr: ChangeDetectorRef) {}
+  constructor(private smoothScrollService:SmoothscrollService, private cartsService: CartsService, private authService: UserAuthService, private cdr: ChangeDetectorRef) {}
 
+  scrollToTop(): void {
+    this.smoothScrollService.scrollToTop();
+  }
   ngOnInit(): void {
     this.cartsService.itemCount.subscribe({
       next: (count) => {

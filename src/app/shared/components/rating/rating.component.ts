@@ -16,8 +16,11 @@ export class RatingComponent {
 
   constructor(private cartsService: CartsService) { }
   ngOnInit(): void {
-    console.log(this.product)
+ 
   }
+
+
+  
   addToCart() {
     this.cartsService.addToCart(this.data, this.amount);
     this.updateItemCount();
@@ -40,6 +43,5 @@ export class RatingComponent {
     }
     return starRating;
   }
-
   
 }

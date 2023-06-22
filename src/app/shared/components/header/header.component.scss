@@ -1,3 +1,30 @@
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-top: 50px;
+  cursor: pointer;
+  // visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-top-btn i {
+  margin: 10px;
+}
+
+.scroll-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 .carousel-item {
   height: 50vh;
   color: var(--min-color);

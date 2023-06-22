@@ -18,6 +18,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RatingComponent } from './components/rating/rating.component';
 import { SearshComponent } from './components/searsh/searsh.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+
+// import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,7 @@ import { SearshComponent } from './components/searsh/searsh.component';
     FooterComponent,
     BannerComponent,
     RatingComponent,
+
   ],
   imports: [
     CommonModule,
@@ -41,7 +48,12 @@ import { SearshComponent } from './components/searsh/searsh.component';
     MatBadgeModule,
     MatSidenavModule,
     MatListModule,
-   
+    NgImageSliderModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    CarouselModule
+
+    
   ],
   exports : [
     HeaderComponent,
@@ -54,7 +66,6 @@ import { SearshComponent } from './components/searsh/searsh.component';
     BannerComponent,
     RatingComponent,
 
-    
   ]
 })
 export class SharedModule { }

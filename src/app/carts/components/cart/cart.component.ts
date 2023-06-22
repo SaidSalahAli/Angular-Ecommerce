@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartProducts= this.update.getCartProducts();
     this.getCartTotal();
-    console.log(this.cartProducts);
+
   }
 
   addAmount(index: number) {

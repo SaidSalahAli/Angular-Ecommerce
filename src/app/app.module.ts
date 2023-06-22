@@ -7,9 +7,12 @@ import { CartsModule } from './carts/carts.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginInModule } from './login-in/login-in.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { SmoothscrollService } from './smoothscroll.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [	
@@ -23,11 +26,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     CartsModule,
     SharedModule,
     LoginInModule,
-    BrowserAnimationsModule,
-   
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), NgbModule, // ToastrModule added
 
   ],
-  providers: [],
+  providers: [SmoothscrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

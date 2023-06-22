@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartsService } from 'src/app/carts/services/carts.service';
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
@@ -15,14 +16,12 @@ export class AllProductsComponent implements OnInit {
   itemCount: number = 0;
   topRating: Product [] =[]
   @Output() itemCountChange = new EventEmitter<number>();
-  constructor(private service: ProductsService) { }
+  constructor(private service: ProductsService ,private update: CartsService) { }
   
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
     this.getTopRatedProducts();
-    console.log(this.topRating)
-    console.log(this.products)
   }
   updateItemCount() {
     this.itemCount = this.cartProducts.length;
@@ -94,6 +93,7 @@ export class AllProductsComponent implements OnInit {
       let exist = this.cartProducts.find((item: any) => item.item.id == event.item.id);
       if (exist) {
         alert("Product is already in your cart");
+        this.update.updateItemCount();
       } else {
         this.cartProducts.push(event);
         localStorage.setItem("cart", JSON.stringify(this.cartProducts));
@@ -114,5 +114,31 @@ export class AllProductsComponent implements OnInit {
       // انفذ التنقل إلى المنتج التالي
     }, 1000);
   }
-  
+  customOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: true,
+  dots: false,
+  navSpeed: 700,
+  navText: ['', ''],
+  responsive: {
+    0: {
+      items: 1
+    },
+    400: {
+      items: 2
+    },
+    740: {
+      items: 3
+    },
+    940: {
+      items: 4
+    }
+  },
+  nav: true
+
+
+}
+
 }

@@ -1,3 +1,51 @@
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+}
+
+.slide {
+  flex: 0 0 300px; /* تعديل العرض حسب الحاجة */
+  margin-right: 10px;
+}
+
+.prev-arrow,
+.next-arrow {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.prev-arrow:hover,
+.next-arrow:hover {
+  background-color: gray;
+  color: white;
+}
+
+.prev-arrow {
+  margin-right: 10px;
+}
+
+.next-arrow {
+  margin-left: 10px;
+}
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-items {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.move-left {
+  transform: translateX(-100%);
+}
+
+.move-right {
+  transform: translateX(100%);
+}
 
 img{
     height: 60vh;
@@ -10,9 +58,20 @@ img{
 }
 
 .containe { 
-    overflow-x: auto;
+
+    white-space: nowrap;
     scrollbar-width: thin;
     scrollbar-color: #A5BA8D #F0F0F0;
+    overflow: hidden;
+    overflow: auto;
+  }
+  .containe i{
+    height: 30px;
+    width: 30px;
+    background-color: var(--min-color);
+
+    z-index: 999999;
+
   }
   
   .containe::-webkit-scrollbar {
@@ -36,7 +95,27 @@ img{
     background-color: #7E9645;
   }
   
-
+  .carousel-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .carousel-prev,
+  .carousel-next {
+    background-color: #ffffff;
+    border: none;
+    color: #333333;
+    font-size: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .carousel-prev:hover,
+  .carousel-next:hover {
+    background-color: #f5f5f5;
+  }
+  
 
   @media (max-width: 767px) {
     .containe {
@@ -47,6 +126,7 @@ img{
 
     }
     .title{
+      font-weight: 800;
       margin-left:20px ;
       font-size: medium;
     }
@@ -57,7 +137,46 @@ img{
     }
   }
   
-  
-  @media (max-width: 420px) {
- 
+
+
+  .slider-container {
+    display: flex;
+    width: fit-content;
   }
+  .product-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .product-grid {
+    width: 300px; /* تعديل حجم العنصر حسب الحاجة */
+    /* تنسيقات أخرى حسب الاحتياجات */
+  }
+  
+  .slider-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .prev-button {
+    margin-right: 1rem;
+  }
+  
+  .next-button {
+    margin-left: 1rem;
+  }
+  
+
+
+
+
+
+
+  
