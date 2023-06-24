@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product';
 import { CartsService } from 'src/app/carts/services/carts.service';
-import { ToastrService } from 'ngx-toastr';
+import { SmoothscrollService } from 'src/app/smoothscroll.service';
+import { NotificationService } from 'src/app/services/notification-service.service';
 
 @Component({
   selector: 'app-products-details',
@@ -17,10 +18,12 @@ export class ProductsDetailsComponent implements OnInit {
   amount: number = 0
   selectedImage: string | undefined;
 
+  imageSize = 430;
   constructor(private route: ActivatedRoute,
     private service: ProductsService,
     private cartService: CartsService,
-    private toastr: ToastrService) {
+    private toastr :NotificationService,
+    private scrollService:SmoothscrollService) {
     this.id = this.route.snapshot.paramMap.get("id")
 
   }
@@ -29,7 +32,9 @@ export class ProductsDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.getProduct()
+    this.scrollService.scrollToTop();
   }
   getStarRating(rating: number): string {
     const fullStars = Math.floor(rating);
@@ -67,28 +72,18 @@ export class ProductsDetailsComponent implements OnInit {
     }
   }
 
-
-  // detectChange() {
-  //   this.cartService.updateItemCount()
-  // }
-
   addToCart() {
     const cartItems = JSON.parse(localStorage.getItem("cart")!) || [];
     const existingItem = cartItems.find((item: any) => item.item.id === this.data.id);
 
     if (existingItem) {
-      this.toastr.success('Product is already in your cart', 'Success', {
-        timeOut: 3000,
-        positionClass: 'toast-top-right'
-      });
+      this.toastr.showInfo('Product is already in your cart', 'Success', )
+ 
     } else {
       cartItems.push({ item: this.data, quantity: this.amount });
       localStorage.setItem("cart", JSON.stringify(cartItems));
       this.cartService.addToCart(this.data, this.amount); // Pass the quantity to the addToCart() function
-      this.toastr.success('Product added to cart', 'Success', {
-        timeOut: 3000,
-        positionClass: 'toast-top-right'
-      });// Display a message indicating that the product has been added to the cart
+      this.toastr.showSuccess('Product added to cart', 'Success', )
     }
   }
   

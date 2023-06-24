@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartsService } from 'src/app/carts/services/carts.service';
 import { Product } from 'src/app/products/models/product';
+import { SmoothscrollService } from 'src/app/smoothscroll.service';
 
 @Component({
   selector: 'app-rating',
@@ -13,13 +14,19 @@ export class RatingComponent {
   addButton:boolean = false;
   amount:number = 0
   product!: Product;
+  selectedImage!: string;
+  isHovered: boolean = false;
 
-  constructor(private cartsService: CartsService) { }
-  ngOnInit(): void {
- 
+  // Method to add transition class
+
+  constructor(private cartsService: CartsService ) {
+    
+   }
+
+  changeImage(imageUrl: string) {
+    this.isHovered = true;
+    this.selectedImage = imageUrl;
   }
-
-
   
   addToCart() {
     this.cartsService.addToCart(this.data, this.amount);

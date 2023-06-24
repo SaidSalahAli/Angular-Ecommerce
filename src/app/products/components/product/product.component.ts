@@ -13,10 +13,15 @@ export class ProductComponent implements OnInit {
   addButton:boolean = false;
   amount:number = 0
   product!: Product;
-
+  selectedImage! :string ;
+  isHovered: boolean = false;
   constructor(private cartsService: CartsService) { }
   ngOnInit(): void {
-    console.log(this.product)
+  }
+
+  changeImage(imageUrl: string) {
+    this.isHovered = true;
+    this.selectedImage = imageUrl;
   }
   addToCart() {
     this.cartsService.addToCart(this.data, this.amount);

@@ -15,20 +15,18 @@ export class CartsService {
   }
 
   getCartProducts() {
-  if ("cart" in localStorage) {
-    return this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
+    if ("cart" in localStorage) {
+      return this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
+    }
   }
-}
 
 
   getCartItemCount() {
     return this.getCartProducts().length;
-
-    
   }
 
   updateItemCount() {
-     this.itemCount.next(this.cartProducts.length);
+    this.itemCount.next(this.cartProducts.length);
 
   }
   addToCart(product: Product, quantity: number) {

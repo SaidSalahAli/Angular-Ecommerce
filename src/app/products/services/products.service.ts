@@ -1,37 +1,82 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Product } from '../models/product';
+import { Observable, catchError, retry, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+  httpOptions;
+  constructor(private http: HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+  }
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+    } else {
+      console.error(`Backend returned code ${error.status}, body was: `, error.error);
+    }
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
 
-  constructor(private http:HttpClient) { 
-  }
-  getAllProducts() {
-    return this.http.get(environment.baseApi +'products')
-  }
-  
-  getProductsByRating(rating: number) {
-    return this.http.get(environment.baseApi + 'products/rating/' + rating);
-  }
-  
-  getAllCategories() {
-    return this.http.get(environment.baseApi +'products/categories')
-  }
-  getProductsByCategory(keyword:string) {
-    return this.http.get(environment.baseApi +'products/category/'+keyword)
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.baseApi}products`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
   }
 
-  getProductById(id:any) {
-    return this.http.get(environment.baseApi +'products/'+id)
+  getProductsByRating(rating: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.baseApi}products/rating/${rating}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
   }
-  
-  getProductsByType(type: string) {
-    return this.http.get(environment.baseApi + 'products?type=' + type);
+
+  getAllCategories(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.baseApi}products/categories`)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
   }
+
+  getProductsByCategory(keyword: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.baseApi}products/category/${keyword}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+  getProductsByCategorySign(keyword: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.baseApi}products/category/${keyword}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${environment.baseApi}products/${id}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  getProductsByType(type: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.baseApi}products`, { params: { type } }).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
   getProductsBySearch(query: string) {
-    return this.http.get(`${environment.baseApi}products/search?q=${query}`);
+    return this.http.get<Product[]>(`${environment.baseApi}products/search`, { params: { q: query } }).pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
   }
 }

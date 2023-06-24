@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { existEmailValidator } from 'src/app/CustomValidator/ExistEmail.validator';
 import { passwordMatch } from 'src/app/CustomValidator/PasswordMatch.validator';
 import { User } from 'src/app/Models/User';
+import { NotificationService } from 'src/app/services/notification-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,15 +18,16 @@ export class RegisterComponent implements OnInit {
   existUserEmails: string[] = [];
   emailFocused: boolean = false;
   constructor(private fb: FormBuilder,
-    private router: Router,
-    private http: HttpClient,) {
+              private router: Router,
+              private http: HttpClient,
+              private toastr :NotificationService,) {
 
   }
 
   ngOnInit() {
     this.userRegisterForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.pattern('[A-Z a-z]{4,}')]],
-      email: ['', [Validators.required,]],
+      email: ['', [Validators.required, existEmailValidator()]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
     }, { validators: [passwordMatch()] });
@@ -35,61 +37,13 @@ export class RegisterComponent implements OnInit {
   submit() {
     this.http.post<any>('http://localhost:3000/userRegester', this.userRegisterForm.value)
       .subscribe((res: any) => {
-        alert('sign is success')
+        this.toastr.showSuccess('Sign up is success', "Success")
         this.userRegisterForm.reset();
         this.router.navigate(['/login'])
-      }, err => {
-        alert('sign is error')
       })
 
   }
 
-
-  // submit() {
-  //   if (this.userRegisterForm.valid) {
-  //     const userModel = this.userRegisterForm.value;
-  //     // Check if the user already exists
-  //     if (this.isUserAlreadyRegistered(userModel)) {
-  //       alert("User already exists!");
-  //     } else {
-  //       // Get existing user data from local storage
-  //       const existingUserData = localStorage.getItem('userData');
-  //       let userData = [];
-
-  //       if (existingUserData) {
-  //         // Parse the existing user data if available
-  //         userData = JSON.parse(existingUserData);
-  //       }
-  //       // Add the new user to the array
-  //       userData.push(userModel);
-  //       // Save updated user data in local storage
-  //       localStorage.setItem('userData', JSON.stringify(userData));
-  //       alert("User registered successfully!");
-
-  //     this.router.navigate(['./login'])
-  //     }
-  //   } else {
-  //     alert("Please fill in the required data correctly.");
-  //   }
-  // }
-
-
-
-  // isUserAlreadyRegistered(userModel: any): boolean {
-  //   // Get existing user data from local storage
-  //   const existingUserData = localStorage.getItem('userData');
-
-  //   if (existingUserData) {
-  //     // Parse the existing user data if available
-  //     const userData = JSON.parse(existingUserData);
-
-  //     // Check if the user already exists based on email or any other unique identifier
-  //     const isUserExists = userData.some((user: any) => user.email === userModel.email);
-
-  //     return isUserExists;
-  //   }
-  //   return false;
-  // }
 
   get fullName() {
     return this.userRegisterForm.get('fullName');

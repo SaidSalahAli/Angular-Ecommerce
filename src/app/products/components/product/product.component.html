@@ -1,10 +1,17 @@
-
 <div class="row">
   <div>
     <div class="product-grid">
-      <div class="product-image">
-        <a class="image">
-          <img src="{{ data.thumbnail }}" class="enlarge-on-hover" />
+      <div
+        class="product-image"
+        [class.hovered]="isHovered"
+        (mouseover)="changeImage(data.images[0]); isHovered = true"
+        (mouseout)="changeImage(data.thumbnail); isHovered = false"
+      >
+        <a class="image" [routerLink]="['/details', data.id]">
+          <img
+            [src]="selectedImage || data.thumbnail"
+            class="enlarge-on-hover"
+          />
         </a>
         <span class="product-discount-label"
           >-{{ data.discountPercentage }}%</span

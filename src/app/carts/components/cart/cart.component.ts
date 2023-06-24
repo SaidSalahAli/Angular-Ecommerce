@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartsService } from 'src/app/carts/services/carts.service';
+import { NotificationService } from 'src/app/services/notification-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,8 @@ export class CartComponent implements OnInit {
   total: number = 0;
   success: boolean = false;
 
-  constructor(private update: CartsService) {}
+  constructor(private update: CartsService,
+              private toastr :NotificationService) {}
 
   ngOnInit(): void {
     this.cartProducts= this.update.getCartProducts();
@@ -40,12 +42,14 @@ export class CartComponent implements OnInit {
     this.cartProducts.splice(index, 1);
     this.updateCart();
     this.update.updateItemCount()
+    this.toastr.showSuccess("Delete product is success ", "Success")
   }
 
   clearCart() {
     this.cartProducts = [];
     this.update.renoveall()
     this.updateCart();
+    this.toastr.showSuccess("Delete all product is success ", "Success")
   }
 
   getCartTotal() {
@@ -60,7 +64,7 @@ export class CartComponent implements OnInit {
     });
     
     if (products.length === 0) {
-      alert('No products found');
+      this.toastr.showError("No products found", "error")
       // Display the success message
     } else {
       this.success = true;

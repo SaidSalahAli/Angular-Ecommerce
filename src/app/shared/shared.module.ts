@@ -32,7 +32,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SelectComponent,
     FooterComponent,
     BannerComponent,
-    RatingComponent,
+    RatingComponent
 
   ],
   imports: [
@@ -64,8 +64,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SelectComponent,
     FooterComponent,
     BannerComponent,
+ 
     RatingComponent,
-
   ]
 })
 export class SharedModule { }

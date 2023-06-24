@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-// import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserAuthService } from '../../services/user-auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification-service.service';
+import { SmoothscrollService } from 'src/app/smoothscroll.service';
+import { existEmailValidator } from 'src/app/CustomValidator/ExistEmail.validator';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +21,19 @@ export class LoginComponent implements OnInit {
     private authService: UserAuthService,
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
-  ) {}
+    private router: Router,
+    private toastr :NotificationService,
+    private scrollService: SmoothscrollService,
+    
+  ) {
+    scrollService.ngOnInit();
+  }
+
 
   ngOnInit() {
     this.userLoginForm = this.fb.group({
-      email: [''],
-      password: [''],
+      email: ['', [Validators.required, existEmailValidator()]],
+      password: ['', [Validators.required]],
     });
     this.isUserLogged = this.authService.isUserLogged;
   }
@@ -39,58 +47,18 @@ export class LoginComponent implements OnInit {
 
         if (user) {
           // User is logged
-          alert('User is logged');
+          this.router.navigate(['/cart']);
+          this.toastr.showSuccess('User is logged' ,"Success")
           this.authService.login(); // Update user logged status
           this.userLoginForm.reset();
-          this.router.navigate(['/cart']);
         } else {
           // Invalid credentials
-          alert('Invalid credentials. Please try again or register a new account.');
+          this.toastr.showError('Invalid credentials. Please try again or register a new account.' ,"error")
         }
-      },
-      (err) => {
-        alert('An error occurred while logging in. Please try again later.');
       }
     );
   
   }
-  
-  // submitt() {
-  //     const emailControl = this.userLoginForm.get<any>('email');
-  //     const passwordControl = this.userLoginForm.get<any>('password');
-
-  //     if (emailControl && passwordControl) {
-  //       const email = emailControl.value;
-  //       const password = passwordControl.value;
-
-  //       // Display entered user data
-  //       console.log('Email:', email);
-  //       console.log('Password:', password);
-
-  //       const registeredData = this.authService.getRegisteredData();
-  //       if (registeredData) {
-  //         const registeredEmail = registeredData.email;
-  //         const registeredPassword = registeredData.password;
-
-  //         if (registeredEmail === email && registeredPassword === password) {
-  //           // Login successful
-  //           // You can perform any necessary actions here, such as setting authentication state or navigating to another page
-  //           alert("Login successful!");
-
-  //           console.log('Registered Email:', registeredEmail);
-  //           console.log('Registered Password:', registeredPassword);
-  //         } else {
-  //           // Invalid credentials
-  //           alert("Invalid credentials. Please try again or register a new account.");
-  //         }
-  //       }
-  //     }
-
-
-  // }
-
-
-
   get email() {
     return this.userLoginForm.get('email');
   }

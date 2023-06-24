@@ -1,9 +1,17 @@
+
+
 .carousel {
   display: flex;
   overflow-x: auto;
   align-items: center;
 }
-
+.custom-toast {
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+}
 .slide {
   flex: 0 0 300px; /* تعديل العرض حسب الحاجة */
   margin-right: 10px;
@@ -51,8 +59,9 @@ img{
     height: 60vh;
 }
 .title{
+  
   margin-top: 35px;
-  margin-left: 110px;
+  
   color: var(--min-color);
   font-size: x-large;
 }
@@ -70,7 +79,7 @@ img{
     width: 30px;
     background-color: var(--min-color);
 
-    z-index: 999999;
+    z-index: 1;
 
   }
   
@@ -127,7 +136,7 @@ img{
     }
     .title{
       font-weight: 800;
-      margin-left:20px ;
+
       font-size: medium;
     }
   

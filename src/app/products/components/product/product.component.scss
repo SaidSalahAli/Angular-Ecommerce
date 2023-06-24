@@ -1,3 +1,12 @@
+.enlarge-on-hover {
+  /* Your existing styles */
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-carousel img.hovered {
+
+  opacity: 0.7;
+}
 
 .product-grid {
   font-family: 'Poppins', sans-serif;
@@ -134,15 +143,6 @@
   transition: transform 0.3s ease;
 }
 
-.enlarge-on-hover:hover {
-  transform: scale(1.1);
-}
-
-@media screen and (max-width: 990px) {
-  .product-grid {
-
-  }
-}
 
 @media screen and (max-width: 450px) {
 
