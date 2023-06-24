@@ -17,6 +17,9 @@
                   <hr class="mt-2" />
                   <div style="max-height: 50%;">
                     <div class="row d-flex justify-content-between align-items-center" *ngFor="let item of cartProducts; let index = index">
+                      <button type="button" class="btn text-muted" (click)="deleteProduct(index)">
+                        <i class="fas fa-times"></i>
+                      </button>
                       <div class="col-md-2 col-lg-2 col-xl-2">
                         <img src="{{ item.item.thumbnail }}" class="img-fluid rounded-3" alt="Cotton T-shirt" />
                       </div>
@@ -38,9 +41,7 @@
                         <h6 class="mb-0">$ {{ item.item.price }}</h6>
                       </div>
                       <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                        <button type="button" class="btn text-muted" (click)="deleteProduct(index)">
-                          <i class="fas fa-times"></i>
-                        </button>
+                    
                       </div>
                       <hr class="my-2" />
                     </div>
