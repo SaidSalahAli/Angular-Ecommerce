@@ -13,7 +13,7 @@ import { existEmailValidator } from 'src/app/CustomValidator/ExistEmail.validato
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent {
-  userDeleted: FormGroup;
+  userDeleted: FormGroup; // Form group for user delete account form
 
   constructor(
     private fb: FormBuilder,
@@ -24,21 +24,23 @@ export class LogoutComponent {
     private scrollService: SmoothscrollService,
   ) {
     this.userDeleted = this.fb.group({
-      email: ['', [Validators.required, existEmailValidator()]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, existEmailValidator()]], // Email field with required validation and custom validator
+      password: ['', [Validators.required]], // Password field with required validation
     });
-    scrollService.ngOnInit();
+    scrollService.ngOnInit(); // Initialize the smooth scroll service
   }
 
+  // Getter for email form control
   get email() {
     return this.userDeleted.get('email');
   }
 
+  // Getter for password form control
   get password() {
     return this.userDeleted.get('password');
   }
 
-
+  // Delete account form submission
   deleteAccount() {
     this.http.get<any>('http://localhost:3000/userRegester').subscribe(
       (res) => {
@@ -47,18 +49,16 @@ export class LogoutComponent {
         });
 
         if (user) {
-          // User is Logout, 
+          // User is logged out
           this.router.navigate(['/product']);
-          this.toastr.showSuccess('User is logout', "Success")
-          this.authService.logout();
+          this.toastr.showSuccess('User is logged out.', 'Success');
+          this.authService.logout(); // Update user logged status
           this.userDeleted.reset();
         } else {
-
+          // Invalid email or password
           this.toastr.showError('Invalid email or password. Please try again.', 'Error');
         }
       }
     );
-
   }
 }
-

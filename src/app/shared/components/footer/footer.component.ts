@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
   cat: string[] = [];
   constructor(private prdCat: ProductsService) {
     this.prdCat.getAllCategories().subscribe((data: any) => (this.cat = data));
-   }
+  }
 
   ngOnInit() {
   }

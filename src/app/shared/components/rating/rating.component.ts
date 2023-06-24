@@ -9,34 +9,46 @@ import { SmoothscrollService } from 'src/app/smoothscroll.service';
   styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent {
-  @Input() data!:Product
+  @Input() data!: Product;
   @Output() addToCartClicked = new EventEmitter<any>();
-  addButton:boolean = false;
-  amount:number = 0
+  addButton: boolean = false;
+  amount: number = 0;
   product!: Product;
   selectedImage!: string;
   isHovered: boolean = false;
 
-  // Method to add transition class
+  constructor(private cartsService: CartsService) {}
 
-  constructor(private cartsService: CartsService ) {
-    
-   }
-
+  /**
+   * Changes the selected image when hovering over a different image.
+   * @param imageUrl The URL of the image being hovered over.
+   */
   changeImage(imageUrl: string) {
     this.isHovered = true;
     this.selectedImage = imageUrl;
   }
   
+  /**
+   * Adds the product to the cart and emits the addToCartClicked event.
+   */
   addToCart() {
     this.cartsService.addToCart(this.data, this.amount);
     this.updateItemCount();
     this.addToCartClicked.emit({ item: this.data, quantity: this.amount });
   }
   
+  /**
+   * Updates the item count in the component by calling the CartsService.
+   */
   updateItemCount() {
     this.amount = this.cartsService.getCartItemCount();
   }
+  
+  /**
+   * Generates the HTML string representing the star rating based on the given rating.
+   * @param rating The rating value of the product.
+   * @returns The HTML string representing the star rating.
+   */
   getStarRating(rating: number) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
@@ -50,5 +62,4 @@ export class RatingComponent {
     }
     return starRating;
   }
-  
 }
